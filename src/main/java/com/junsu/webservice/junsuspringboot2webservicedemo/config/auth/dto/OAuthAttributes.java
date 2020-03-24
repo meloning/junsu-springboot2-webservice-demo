@@ -2,6 +2,7 @@ package com.junsu.webservice.junsuspringboot2webservicedemo.config.auth.dto;
 
 import com.junsu.webservice.junsuspringboot2webservicedemo.domain.user.Role;
 import com.junsu.webservice.junsuspringboot2webservicedemo.domain.user.User;
+import com.junsu.webservice.junsuspringboot2webservicedemo.exception.UnsupportedSocialIdException;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -25,7 +26,26 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        return ofGoogle(userNameAttributeName, attributes);
+        switch (registrationId) {
+            case "google":
+                return ofGoogle(userNameAttributeName, attributes);
+            case "naver":
+                return ofNaver("id", attributes);
+            default:
+                throw new UnsupportedSocialIdException("Not Support Social Login"); // TODO: Implement ExceptionHandling based on REST Doc
+        }
+    }
+
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+
+        return OAuthAttributes.builder()
+                .name(response.get("name").toString())
+                .email(response.get("email").toString())
+                .picture(response.get("profile_image").toString())
+                .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {

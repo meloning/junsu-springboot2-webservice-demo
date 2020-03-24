@@ -33,7 +33,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
         // OAuth2 로그인 진행 시 키가 되는 필드값 (Primary Key)
-        // Google: "sub", Naver, Kakao Not Support
+        // Google: "sub", Naver: "id" in response feild, Kakao Not Support
         // Naver/Google Login을 동시 지원할 떄 사용.
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
