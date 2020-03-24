@@ -1,6 +1,7 @@
 package com.junsu.webservice.junsuspringboot2webservicedemo.domain.posts;
 
 import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
 
-    @After
+    @AfterEach
     public void cleanup() {
         postsRepository.deleteAll();
     }
