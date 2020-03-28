@@ -17,7 +17,7 @@ script: "./gradlew clean build"
 before_deploy:
   - zip -r junsu-springboot2-webservice-demo *
   - mkdir -p deploy
-  - mv junsu-springboot2-webservice-demo.zip deploy/junsu-springboot2-webservice-demo.zip
+  - mv junsu-springboot2-webservice-demo.zip deploy/
 
 deploy:
   - provider: s3
