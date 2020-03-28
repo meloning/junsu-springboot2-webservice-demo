@@ -66,7 +66,7 @@ echo "> Run $JAR_NAME"
 nohup java -jar \
 -Dspring.config.location=classpath:/application.yml,classpath:/application-real.yml,/home/ec2-user/app/application-real-db.yml,/home/ec2-user/app/application-oauth.yml \
 -Dspring.profiles.active=real \
-$JAR_NAME > $REPOSITORY/nohup.out 2>$1 $
+$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 # nohup 실행 시 CodeDeploy는 무한 대기
 # 이 이슈를 해결하기 위해 nohup.out 파일을 표준 입출력용으로 별로로 사용
 # 이렇게 하지 않으면 nohup.out 파일이 생기지 않고, CodeDeploy 로그에 표준 입출력이 출력
