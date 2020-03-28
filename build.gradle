@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.junsu.webservice'
-version = '0.0.1-SNAPSHOT'
+version = '3.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
