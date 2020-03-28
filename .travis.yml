@@ -15,7 +15,7 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - mkdir -p before-deploy
+  - mkdir -p before-deploy # Travis CI는 S3로 디렉토리만 업로드 가능
   - cp scripts/*.sh before-deploy/
   - cp appspec.yml before-deploy/
   - cp build/libs/*.jar before-deploy/
