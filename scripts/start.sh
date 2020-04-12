@@ -10,7 +10,7 @@ source "${ABSDIR}"/profile.sh
 
 REPOSITORY=/home/ec2-user/app/step3
 # shellcheck disable=SC2034
-PROJECT_NAME=junsu-springboot2-webservice
+PROJECT_NAME=junsu-springboot2-webservice-demo
 
 echo "> Build 파일 복사"
 echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
